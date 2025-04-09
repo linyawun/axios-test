@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { API_URL } from '../constants.js'
 
-const axiosParamsInUrl = async () => {
+export async function axiosParamsInUrl() {
   try {
     console.log('📢 [Axios] 測試 URL 編碼 ParamsInUrl:')
     const search = 'hello world'
@@ -13,7 +13,7 @@ const axiosParamsInUrl = async () => {
   }
 }
 
-const axiosAutoEncodeParams = async () => {
+export async function axiosAutoEncodeParams() {
   try {
     console.log('📢 [Axios] 測試 URL 編碼 AutoEncodeParams:')
     const search = 'hello world'
@@ -26,6 +26,3 @@ const axiosAutoEncodeParams = async () => {
     console.error('axiosAutoEncodeParams error:', error)
   }
 }
-
-axiosParamsInUrl()
-// axiosAutoEncodeParams()

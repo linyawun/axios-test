@@ -7,6 +7,8 @@ app.use(express.json())
 
 // ✅ 測試 URL 編碼
 app.get('/url-encoded', (req, res) => {
+  // Enable CORS for all routes
+  res.header('Access-Control-Allow-Origin', '*')
   res.json({ receivedQuery: req.query })
 })
 

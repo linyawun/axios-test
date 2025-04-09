@@ -1,0 +1,49 @@
+// Import basic demos
+import {
+  axiosConfigDemo,
+  axiosUrlConfigDemo,
+  axiosMethodDemo,
+  axiosInstanceDemo,
+  axiosInstanceCreateDemo,
+  axiosInstanceComparisonDemo,
+} from './1-basic-use/basic-demos.js'
+// Import encode demos
+import { axiosAutoEncodeParams, axiosParamsInUrl } from './2-encode/axios-demo.js'
+import { fetchWithoutEncode, fetchManualEncode } from './2-encode/fetch-demo.js'
+// Import TypeScript demo
+import { axiosTypeScriptDemo } from './1-basic-use/typescript-demos.ts'
+
+const demos = {
+  // Encode demos
+  axiosAutoEncodeParams,
+  axiosParamsInUrl,
+  fetchWithoutEncode,
+  fetchManualEncode,
+
+  // Basic demos
+  axiosConfigDemo,
+  axiosUrlConfigDemo,
+  axiosMethodDemo,
+  axiosInstanceDemo,
+  axiosInstanceCreateDemo,
+  axiosInstanceComparisonDemo,
+
+  // TypeScript demo
+  axiosTypeScriptDemo,
+}
+
+document.querySelectorAll('.demo-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const demoName = button.dataset.demo
+    if (demos[demoName]) {
+      // Remove active class from all buttons
+      document.querySelectorAll('.demo-btn').forEach(btn => btn.classList.remove('active'))
+      // Add active class to clicked button
+      button.classList.add('active')
+      // Clear previous console outputs
+      console.clear()
+      // Run the demo
+      demos[demoName]()
+    }
+  })
+})

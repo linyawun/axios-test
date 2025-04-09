@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .demo-section {
+        margin: 20px 0;
+      }
+      .demo-section h2 {
+        margin: 10px 0;
+        color: #333;
+      }
+      .demo-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .demo-btn {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #f5f5f5;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .demo-btn:hover {
+        background: #e5e5e5;
+      }
+      .demo-btn.active {
+        background: #0E7FB0;
+        color: white;
+        border-color: #0D5878;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Axios Demos</h1>
+      <p>Select a demo and check the console for results</p>
+      
+      <div class="demo-section">
+        <h2>Basic Usage</h2>
+        <div class="demo-buttons">
+          <button class="demo-btn" data-demo="axiosConfigDemo">axios(config)</button>
+          <button class="demo-btn" data-demo="axiosUrlConfigDemo">axios(url, config)</button>
+          <button class="demo-btn" data-demo="axiosMethodDemo">axios.method()</button>
+          <button class="demo-btn" data-demo="axiosInstanceDemo">axios.create()</button>
+          <button class="demo-btn" data-demo="axiosInstanceCreateDemo">instance.create()</button>
+          <button class="demo-btn" data-demo="axiosInstanceComparisonDemo">Instance vs Global</button>
+          <button class="demo-btn" data-demo="axiosTypeScriptDemo">TypeScript Instance Creation</button>
+        </div>
+      </div>
+
+
+      <div class="demo-section">
+        <h2>URL Encoding</h2>
+        <div class="demo-buttons">
+          <button class="demo-btn" data-demo="axiosAutoEncodeParams">Axios Auto Encode Params</button>
+          <button class="demo-btn" data-demo="axiosParamsInUrl">Axios Params In Url</button>
+          <button class="demo-btn" data-demo="fetchWithoutEncode">Fetch Without Encode</button>
+          <button class="demo-btn" data-demo="fetchManualEncode">Fetch Manual Encode</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html> 

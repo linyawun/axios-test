@@ -1,6 +1,6 @@
 import { API_URL } from '../constants.js'
 
-const fetchWithoutEncode = async () => {
+export async function fetchWithoutEncode() {
   try {
     console.log('📢 [Fetch] 測試 URL 編碼 WithoutEncode:')
     const search = 'hello world'
@@ -13,7 +13,7 @@ const fetchWithoutEncode = async () => {
   }
 }
 
-const fetchManualEncode = async () => {
+export async function fetchManualEncode() {
   try {
     console.log('📢 [Fetch] 測試 URL 編碼 ManualEncode:')
     const search = 'hello world'
@@ -27,6 +27,3 @@ const fetchManualEncode = async () => {
     console.error('Fetch 發生錯誤:', error)
   }
 }
-
-fetchWithoutEncode()
-// fetchManualEncode()
