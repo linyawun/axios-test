@@ -2,10 +2,10 @@
   "name": "axios-demo",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
+    "server": "node server.js",
     "build": "tsc",
-    "start": "node dist/axios-demo.js",
-    "dev": "ts-node axios-demo.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,6 +19,6 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.30",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.8.3"
   }
 }
