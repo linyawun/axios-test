@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "server": "node server.js",
+    "server": "node src/server.js --port 3030",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
