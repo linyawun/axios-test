@@ -8,14 +8,33 @@ app.use(express.json())
 // ✅ 測試 URL 編碼
 app.get('/url-encoded', (req, res) => {
   // Enable CORS for all routes
-  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3006')
   res.json({ receivedQuery: req.query })
 })
 
 // ✅ 測試請求與回應的資料轉換
-app.get('/convert', (req, res) => {
+app.get('/text-response', (req, res) => {
   res.type('text/plain') // 以純文字回應
   res.send(JSON.stringify({ message: 'this is a JSON but the response is text/plain' }))
+})
+
+// ✅ 測試 blob 回應
+app.get('/download-csv', (req, res) => {
+  // 模擬一個 CSV 檔案內容
+  const csvContent = `Name,Age,City
+John Doe,30,New York
+Jane Smith,25,Los Angeles
+Bob Johnson,35,Chicago`
+
+  // 設定檔案下載的 headers
+  res.set({
+    'Access-Control-Allow-Origin': 'http://localhost:3006',
+    'Content-Type': 'text/csv',
+    'Content-Disposition': 'attachment; filename="users.csv"',
+    'Content-Length': Buffer.byteLength(csvContent),
+  })
+
+  res.send(csvContent)
 })
 
 // ✅ 測試錯誤處理機制

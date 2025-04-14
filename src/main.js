@@ -10,6 +10,8 @@ import {
 // Import encode demos
 import { axiosAutoEncodeParams, axiosParamsInUrl } from './2-encode/axios-demo.js'
 import { fetchWithoutEncode, fetchManualEncode } from './2-encode/fetch-demo.js'
+import { axiosBlobResponse, axiosJsonResponse } from './3-transformReqRes/axios-demo.js'
+import { fetchBlobResponse, fetchJsonResponse } from './3-transformReqRes/fetch-demo.js'
 // Import TypeScript demo
 import { axiosTypeScriptDemo } from './1-basic-use/typescript-demos.ts'
 
@@ -30,6 +32,12 @@ const demos = {
 
   // TypeScript demo
   axiosTypeScriptDemo,
+
+  // Transform Request & Response demos
+  axiosJsonResponse,
+  axiosBlobResponse,
+  fetchJsonResponse,
+  fetchBlobResponse,
 }
 
 document.querySelectorAll('.demo-btn').forEach(button => {
