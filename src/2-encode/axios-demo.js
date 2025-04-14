@@ -4,7 +4,7 @@ import { API_URL } from '../constants.js'
 export async function axiosParamsInUrl() {
   try {
     console.log('📢 [Axios] 測試 URL 編碼 ParamsInUrl:')
-    const search = 'hello world'
+    const search = 'hello world!'
     const symbol = '&$'
     const response = await axios.get(`${API_URL}/url-encoded?search=${search}&symbol=${symbol}`)
     console.log(response.data)
@@ -16,7 +16,7 @@ export async function axiosParamsInUrl() {
 export async function axiosAutoEncodeParams() {
   try {
     console.log('📢 [Axios] 測試 URL 編碼 AutoEncodeParams:')
-    const search = 'hello world'
+    const search = 'hello world!'
     const symbol = '&$'
     const response = await axios.get(`${API_URL}/url-encoded`, {
       params: { search, symbol },

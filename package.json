@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "server": "node src/server.js --port 3030",
-    "dev": "vite",
+    "dev": "vite --port 3006",
     "build": "vite build",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"

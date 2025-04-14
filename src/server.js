@@ -15,25 +15,25 @@ app.get('/url-encoded', (req, res) => {
 // ✅ 測試請求與回應的資料轉換
 app.get('/convert', (req, res) => {
   res.type('text/plain') // 以純文字回應
-  res.send(JSON.stringify({ message: '這是一個 JSON 但回應是 text/plain' }))
+  res.send(JSON.stringify({ message: 'this is a JSON but the response is text/plain' }))
 })
 
 // ✅ 測試錯誤處理機制
 app.get('/error', (req, res) => {
-  res.status(500).json({ error: '伺服器內部錯誤' })
+  res.status(500).json({ error: 'server internal error' })
 })
 
 // ✅ 測試攔截器
 app.get('/interceptors', (req, res) => {
   const authHeader = req.headers.authorization
   if (authHeader === 'Bearer secret-token') {
-    res.json({ message: '授權成功' })
+    res.json({ message: 'authorization success' })
   } else {
-    res.status(401).json({ error: '未授權' })
+    res.status(401).json({ error: 'unauthorized' })
   }
 })
 
 // 啟動伺服器
 app.listen(PORT, () => {
-  console.log(`伺服器運行在 ${API_URL}`)
+  console.log(`server is running on ${API_URL}`)
 })
