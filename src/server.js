@@ -2,13 +2,24 @@ import express from 'express'
 import { API_URL, PORT } from './constants.js'
 const app = express()
 
+// CORS middleware configuration
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3006')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+
+  // Handle OPTIONS method
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200)
+  }
+  next()
+})
+
 // 允許解析 JSON 和 URL 查詢參數
 app.use(express.json())
 
 // ✅ 測試 URL 編碼
 app.get('/url-encoded', (req, res) => {
-  // Enable CORS for all routes
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3006')
   res.json({ receivedQuery: req.query })
 })
 
@@ -28,7 +39,6 @@ Bob Johnson,35,Chicago`
 
   // 設定檔案下載的 headers
   res.set({
-    'Access-Control-Allow-Origin': 'http://localhost:3006',
     'Content-Type': 'text/csv',
     'Content-Disposition': 'attachment; filename="users.csv"',
     'Content-Length': Buffer.byteLength(csvContent),
@@ -50,6 +60,15 @@ app.get('/interceptors', (req, res) => {
   } else {
     res.status(401).json({ error: 'unauthorized' })
   }
+})
+
+// ✅ 測試 JSON 請求
+app.post('/json-request', (req, res) => {
+  console.log('Received body:', req.body)
+  res.json({
+    message: 'JSON request received',
+    receivedData: req.body,
+  })
 })
 
 // 啟動伺服器

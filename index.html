@@ -33,9 +33,10 @@
         background: #f5f5f5;
         cursor: pointer;
         font-size: 16px;
+        transition: background 0.3s ease;
       }
       .demo-btn:hover {
-        background: #e5e5e5;
+        background: #e9e8e8;
       }
       .demo-btn.active {
         background: #0E7FB0;
@@ -76,10 +77,12 @@
       <div class="demo-section">  
         <h2>Transform Request & Response</h2>
         <div class="demo-buttons">  
+          <button class="demo-btn" data-demo="axiosPostJson">Axios Post JSON</button>
           <button class="demo-btn" data-demo="axiosJsonResponse">Axios JSON Response</button>
-          <button class="demo-btn" data-demo="axiosBlobResponse">Axios Blob Response</button>
+          <button class="demo-btn" data-demo="axiosBlobResponse">Axios Blob Response (download csv)</button>
+          <button class="demo-btn" data-demo="fetchPostJson">Fetch Post JSON</button>
           <button class="demo-btn" data-demo="fetchJsonResponse">Fetch JSON Response</button>
-          <button class="demo-btn" data-demo="fetchBlobResponse">Fetch Blob Response</button>
+          <button class="demo-btn" data-demo="fetchBlobResponse">Fetch Blob Response (download csv)</button>
         </div>
       </div>
     </div>

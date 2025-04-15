@@ -1,7 +1,40 @@
 import { API_URL } from '../constants.js'
 
 /**
- * 使用 Fetch API 發送一般 JSON 請求
+ * 展示發送 JSON 資料的請求
+ */
+export async function fetchPostJson() {
+  try {
+    console.log('📢 [Fetch] 測試發送 JSON 資料:')
+
+    const data = {
+      name: 'John Doe',
+      age: 30,
+      city: 'New York',
+    }
+
+    // Fetch 需要手動:
+    // 1. 設定 Content-Type: application/json
+    // 2. 將 JavaScript 物件轉換為 JSON 字串
+    const response = await fetch(`${API_URL}/json-request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    const result = await response.json()
+    console.log('request data:', data)
+    console.log('response.json():', result)
+  } catch (error) {
+    console.error('Error posting JSON:', error)
+    throw error
+  }
+}
+
+/**
+ * 取得 JSON response
  * @returns {Promise<Object>} 解析後的 JSON 資料
  */
 export async function fetchJsonResponse() {

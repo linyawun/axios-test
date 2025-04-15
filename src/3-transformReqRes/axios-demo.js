@@ -2,7 +2,33 @@ import axios from 'axios'
 import { API_URL } from '../constants.js'
 
 /**
- * 發送一般 JSON 請求
+ * 展示發送 JSON 資料的請求
+ */
+export async function axiosPostJson() {
+  try {
+    console.log('📢 [Axios] 測試發送 JSON 資料:')
+
+    const data = {
+      name: 'John Doe',
+      age: 30,
+      city: 'New York',
+    }
+
+    // Axios 會自動:
+    // 1. 設定 Content-Type: application/json
+    // 2. 將 JavaScript 物件轉換為 JSON 字串
+    const response = await axios.post(`${API_URL}/json-request`, data)
+
+    console.log('request data:', data)
+    console.log('response.data:', response.data)
+  } catch (error) {
+    console.error('Error posting JSON:', error)
+    throw error
+  }
+}
+
+/**
+ * 取得 JSON response
  * @returns {Promise<Object>} 解析後的 JSON 資料
  */
 export async function axiosJsonResponse() {
