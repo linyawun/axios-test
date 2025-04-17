@@ -23,10 +23,10 @@ app.get('/url-encoded', (req, res) => {
   res.json({ receivedQuery: req.query })
 })
 
-// ✅ 測試請求與回應的資料轉換
-app.get('/text-response', (req, res) => {
-  res.type('text/plain') // 以純文字回應
-  res.send(JSON.stringify({ message: 'this is a JSON but the response is text/plain' }))
+// ✅ 測試非法 JSON 回應
+app.get('/invalid-json', (req, res) => {
+  // do not fix this json
+  res.send({ name: test })
 })
 
 // ✅ 測試 blob 回應

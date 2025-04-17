@@ -76,3 +76,23 @@ export async function axiosBlobResponse() {
     throw error
   }
 }
+
+/**
+ * 測試非法 JSON 回應
+ */
+export async function axiosInvalidJsonResponse() {
+  try {
+    console.log('📢 [Axios] 測試非法 JSON Response:')
+    const response = await axios.get(`${API_URL}/invalid-json`, {
+      transitional: {
+        silentJSONParsing: false,
+      },
+      responseType: 'json',
+    })
+    console.log('response:', response)
+    console.log('response.data:', response.data)
+  } catch (error) {
+    console.error('Error fetching JSON:', error)
+    throw error
+  }
+}
