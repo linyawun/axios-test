@@ -18,6 +18,32 @@ app.use((req, res, next) => {
 // 允許解析 JSON 和 URL 查詢參數
 app.use(express.json())
 
+// ✅ 測試 Success response (200)
+app.get('/api/success', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: {
+      message: 'Operation successful',
+    },
+  })
+})
+
+// ✅ 測試 Not Found (404)
+app.get('/api/not-found', (req, res) => {
+  res.status(404).json({
+    status: 'error',
+    message: 'Resource not found',
+  })
+})
+
+// ✅ 測試 Server Error (500)
+app.get('/api/error', (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Internal server error',
+  })
+})
+
 // ✅ 測試 URL 編碼
 app.get('/url-encoded', (req, res) => {
   res.json({ receivedQuery: req.query })
@@ -47,11 +73,6 @@ Bob Johnson,35,Chicago`
   res.send(csvContent)
 })
 
-// ✅ 測試錯誤處理機制
-app.get('/error', (req, res) => {
-  res.status(500).json({ error: 'server internal error' })
-})
-
 // ✅ 測試攔截器
 app.get('/interceptors', (req, res) => {
   const authHeader = req.headers.authorization
@@ -73,5 +94,5 @@ app.post('/json-request', (req, res) => {
 
 // 啟動伺服器
 app.listen(PORT, () => {
-  console.log(`server is running on ${API_URL}`)
+  console.log(`Server is running on ${API_URL}`)
 })
