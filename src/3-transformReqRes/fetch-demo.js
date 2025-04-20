@@ -1,17 +1,17 @@
-import { API_URL } from '../constants.js'
+import { API_URL } from '../constants.js';
 
 /**
  * 展示發送 JSON 資料的請求
  */
 export async function fetchPostJson() {
   try {
-    console.log('📢 [Fetch] 測試發送 JSON 資料:')
+    console.log('📢 [Fetch] transform request - Post Json:');
 
     const data = {
       name: 'John Doe',
       age: 30,
       city: 'New York',
-    }
+    };
 
     // Fetch 需要手動:
     // 1. 設定 Content-Type: application/json
@@ -22,14 +22,14 @@ export async function fetchPostJson() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    })
+    });
 
-    const result = await response.json()
-    console.log('request data:', data)
-    console.log('response.json():', result)
+    const result = await response.json();
+    console.log('request data:', data);
+    console.log('response.json():', result);
   } catch (error) {
-    console.error('Error posting JSON:', error)
-    throw error
+    console.error('Error posting JSON:', error);
+    throw error;
   }
 }
 
@@ -39,14 +39,14 @@ export async function fetchPostJson() {
  */
 export async function fetchJsonResponse() {
   try {
-    console.log('📢 [Fetch] 測試 JSON Response:')
-    const response = await fetch(`${API_URL}/url-encoded?name=test`)
-    const data = await response.json()
-    console.log('response:', response)
-    console.log('response.json():', data)
+    console.log('📢 [Fetch] transform response - Json Response:');
+    const response = await fetch(`${API_URL}/url-encoded?name=test`);
+    const data = await response.json();
+    console.log('response:', response);
+    console.log('response.json():', data);
   } catch (error) {
-    console.error('Error fetching JSON:', error)
-    throw error
+    console.error('Error fetching JSON:', error);
+    throw error;
   }
 }
 
@@ -55,31 +55,31 @@ export async function fetchJsonResponse() {
  */
 export async function fetchBlobResponse() {
   try {
-    console.log('📢 [Fetch] 測試 blob Response:')
-    const response = await fetch(`${API_URL}/download-csv`)
-    const filename = 'downloaded.csv'
+    console.log('📢 [Fetch] transform response - Blob Response:');
+    const response = await fetch(`${API_URL}/download-csv`);
+    const filename = 'downloaded.csv';
 
     // 取得 blob 資料
-    const blob = await response.blob()
-    console.log('response:', response)
-    console.log('response.blob():', blob)
+    const blob = await response.blob();
+    console.log('response:', response);
+    console.log('response.blob():', blob);
 
     // 建立 Blob URL
-    const url = window.URL.createObjectURL(blob)
+    const url = window.URL.createObjectURL(blob);
 
     // 建立一個暫時的 <a> 元素來觸發下載
-    const link = document.createElement('a')
-    link.href = url
-    link.download = filename
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
     // 將連結加入文件中並觸發點擊
-    document.body.appendChild(link)
-    link.click()
+    document.body.appendChild(link);
+    link.click();
     // 清理：移除連結和釋放 URL
-    document.body.removeChild(link)
-    window.URL.revokeObjectURL(url)
-    console.log('✅ 檔案下載已開始')
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+    console.log('✅ File download started');
   } catch (error) {
-    console.error('Error downloading file:', error)
-    throw error
+    console.error('Error downloading file:', error);
+    throw error;
   }
 }

@@ -4,7 +4,7 @@ import { API_URL } from '../constants.js';
 // Test successful response (200)
 export async function axiosSuccessResponse() {
   try {
-    console.log('📢 [Axios] 測試 200 成功:');
+    console.log('📢 [Axios] Error Handling - 200 Success Response:');
     const response = await axios.get(`${API_URL}/success`);
     console.log('Success:', response.data);
   } catch (error) {
@@ -15,7 +15,7 @@ export async function axiosSuccessResponse() {
 // Test not found error (404)
 export async function axiosNotFoundError() {
   try {
-    console.log('📢 [Axios] 測試 404 錯誤:');
+    console.log('📢 [Axios] Error Handling - 404 Not Found Error:');
     await axios.get(`${API_URL}/not-found`);
   } catch (error) {
     handleError(error);
@@ -25,7 +25,7 @@ export async function axiosNotFoundError() {
 // Test server error (500)
 export async function axiosServerError() {
   try {
-    console.log('📢 [Axios] 測試 500 錯誤:');
+    console.log('📢 [Axios] Error Handling - 500 Server Error:');
     await axios.get(`${API_URL}/error`);
   } catch (error) {
     handleError(error);

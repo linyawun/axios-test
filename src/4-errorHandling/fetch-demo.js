@@ -3,6 +3,7 @@ import { API_URL } from '../constants.js';
 // Test successful response (200)
 export async function fetchSuccessResponse() {
   try {
+    console.log('📢 [Fetch] Error Handling - 200 Success Response:');
     const response = await fetch(`${API_URL}/success`);
 
     // Fetch doesn't automatically throw errors for non-200 responses
@@ -22,6 +23,7 @@ export async function fetchSuccessResponse() {
 // Test not found error (404)
 export async function fetchNotFoundError() {
   try {
+    console.log('📢 [Fetch] Error Handling - 404 Not Found Error:');
     const response = await fetch(`${API_URL}/not-found`);
 
     // Fetch doesn't automatically throw errors for non-200 responses
@@ -41,6 +43,7 @@ export async function fetchNotFoundError() {
 // Test server error (500)
 export async function fetchServerError() {
   try {
+    console.log('📢 [Fetch] Error Handling - 500 Server Error:');
     const response = await fetch(`${API_URL}/error`);
 
     // Fetch doesn't automatically throw errors for non-200 responses
