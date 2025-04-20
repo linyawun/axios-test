@@ -56,7 +56,7 @@ Enter the following in your browser's address bar to view the page:
 http://localhost:3006
 ```
 
-The demo server runs on port `3030`, and the client runs on port `3006`.
+The demo server runs on port `3060`, and the client runs on port `3006`.
 
 ## Project Structure
 
