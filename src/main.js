@@ -32,6 +32,11 @@ import {
   axiosNotFoundError,
   axiosServerError,
 } from './4-errorHandling/axios-demo.js';
+import {
+  fetchSuccessResponse,
+  fetchNotFoundError,
+  fetchServerError,
+} from './4-errorHandling/fetch-demo.js';
 // Import TypeScript demo
 import { axiosTypeScriptDemo } from './1-basic-use/typescript-demos.ts';
 
@@ -66,6 +71,9 @@ const demos = {
   axiosSuccessResponse,
   axiosNotFoundError,
   axiosServerError,
+  fetchSuccessResponse,
+  fetchNotFoundError,
+  fetchServerError,
 };
 
 document.querySelectorAll('.demo-btn').forEach((button) => {

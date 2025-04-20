@@ -1,37 +1,65 @@
-// Fetch Demo - Manual Error Handling
-const BASE_URL = 'http://localhost:3006/api'
+import { API_URL } from '../constants.js';
 
-async function testEndpoint(endpoint) {
+// Test successful response (200)
+export async function fetchSuccessResponse() {
   try {
-    console.log(`\nTesting endpoint: ${endpoint}`)
-    const response = await fetch(`${BASE_URL}${endpoint}`)
+    const response = await fetch(`${API_URL}/success`);
 
     // Fetch doesn't automatically throw errors for non-200 responses
     // We need to check response.ok manually
     if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(`${response.status} - ${errorData.message}`)
+      const errorData = await response.json();
+      throw new Error(`${response.status} - ${errorData.message}`);
     }
 
-    const data = await response.json()
-    console.log('Success:', data)
+    const data = await response.json();
+    console.log('Success:', data);
   } catch (error) {
-    console.error('Error:', error.message)
+    handleError(error);
   }
 }
 
-// Run tests
-async function runFetchDemo() {
-  console.log('=== Fetch Demo - Manual Error Handling ===')
+// Test not found error (404)
+export async function fetchNotFoundError() {
+  try {
+    const response = await fetch(`${API_URL}/not-found`);
 
-  // Test 200 - Success
-  await testEndpoint('/success')
+    // Fetch doesn't automatically throw errors for non-200 responses
+    // We need to check response.ok manually
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`${response.status} - ${errorData.message}`);
+    }
 
-  // Test 404 - Not Found
-  await testEndpoint('/not-found')
-
-  // Test 500 - Server Error
-  await testEndpoint('/error')
+    const data = await response.json();
+    console.log('Success:', data);
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-runFetchDemo()
+// Test server error (500)
+export async function fetchServerError() {
+  try {
+    const response = await fetch(`${API_URL}/error`);
+
+    // Fetch doesn't automatically throw errors for non-200 responses
+    // We need to check response.ok manually
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`${response.status} - ${errorData.message}`);
+    }
+
+    const data = await response.json();
+    console.log('Success:', data);
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+// Error handler function
+function handleError(error) {
+  if (error.message) {
+    console.error('Error:', error.message);
+  }
+}
