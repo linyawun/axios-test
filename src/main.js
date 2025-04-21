@@ -6,39 +6,26 @@ import {
   axiosInstanceDemo,
   axiosInstanceCreateDemo,
   axiosInstanceComparisonDemo,
-} from './1-basic-use/basic-demos.js';
+} from './1-basic-use/basic-demos.js'
 // Import encode demos
-import {
-  axiosAutoEncodeParams,
-  axiosParamsInUrl,
-} from './2-encode/axios-demo.js';
-import {
-  fetchWithoutEncode,
-  fetchManualEncode,
-} from './2-encode/fetch-demo.js';
+import { axiosAutoEncodeParams, axiosParamsInUrl } from './2-encode/axios-demo.js'
+import { fetchWithoutEncode, fetchManualEncode } from './2-encode/fetch-demo.js'
 import {
   axiosBlobResponse,
   axiosJsonResponse,
   axiosPostJson,
   axiosInvalidJsonResponse,
-} from './3-transformReqRes/axios-demo.js';
-import {
-  fetchBlobResponse,
-  fetchJsonResponse,
-  fetchPostJson,
-} from './3-transformReqRes/fetch-demo.js';
+} from './3-transformReqRes/axios-demo.js'
+import { fetchBlobResponse, fetchJsonResponse, fetchPostJson } from './3-transformReqRes/fetch-demo.js'
 import {
   axiosSuccessResponse,
   axiosNotFoundError,
   axiosServerError,
-} from './4-errorHandling/axios-demo.js';
-import {
-  fetchSuccessResponse,
-  fetchNotFoundError,
-  fetchServerError,
-} from './4-errorHandling/fetch-demo.js';
+  axiosCustomStatus,
+} from './4-errorHandling/axios-demo.js'
+import { fetchSuccessResponse, fetchNotFoundError, fetchServerError } from './4-errorHandling/fetch-demo.js'
 // Import TypeScript demo
-import { axiosTypeScriptDemo } from './1-basic-use/typescript-demos.ts';
+import { axiosTypeScriptDemo } from './1-basic-use/typescript-demos.ts'
 
 const demos = {
   // Encode demos
@@ -71,25 +58,24 @@ const demos = {
   axiosSuccessResponse,
   axiosNotFoundError,
   axiosServerError,
+  axiosCustomStatus,
   fetchSuccessResponse,
   fetchNotFoundError,
   fetchServerError,
-};
+}
 
-document.querySelectorAll('.demo-btn').forEach((button) => {
+document.querySelectorAll('.demo-btn').forEach(button => {
   button.addEventListener('click', () => {
-    const demoName = button.dataset.demo;
+    const demoName = button.dataset.demo
     if (demos[demoName]) {
       // Remove active class from all buttons
-      document
-        .querySelectorAll('.demo-btn')
-        .forEach((btn) => btn.classList.remove('active'));
+      document.querySelectorAll('.demo-btn').forEach(btn => btn.classList.remove('active'))
       // Add active class to clicked button
-      button.classList.add('active');
+      button.classList.add('active')
       // Clear previous console outputs
-      console.clear();
+      console.clear()
       // Run the demo
-      demos[demoName]();
+      demos[demoName]()
     }
-  });
-});
+  })
+})
