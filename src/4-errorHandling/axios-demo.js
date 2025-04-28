@@ -8,7 +8,7 @@ export async function axiosSuccessResponse() {
     const response = await axios.get(`${API_URL}/success`)
     console.log('Success:', response.data)
   } catch (error) {
-    handleError(error)
+    console.log('Error:', error.response.data)
   }
 }
 
@@ -19,7 +19,7 @@ export async function axiosNotFoundError() {
     const response = await axios.get(`${API_URL}/not-found`)
     console.log('Success:', response.data)
   } catch (error) {
-    handleError(error)
+    console.log('Error:', error.response.data)
   }
 }
 
@@ -30,7 +30,7 @@ export async function axiosServerError() {
     const response = await axios.get(`${API_URL}/error`)
     console.log('Success:', response.data)
   } catch (error) {
-    handleError(error)
+    console.log('Error:', error.response.data)
   }
 }
 
@@ -44,7 +44,7 @@ export async function axiosCustomStatus() {
     })
     console.log('Success:', response.data)
   } catch (error) {
-    handleError(error)
+    console.log('Error:', error.response.data)
   }
 }
 
